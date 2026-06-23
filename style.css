@@ -1,0 +1,154 @@
+/* Общие настройки */
+body {
+  background-color: #111416;
+  color: #f0f2f5;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 15px;
+  margin: 0;
+}
+
+/* Верхняя панель: бургер и лого */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+}
+
+.menu-icon {
+  font-size: 24px;
+  color: #de9b35;
+  cursor: pointer;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #ffffff;
+  border-bottom: 2px solid #de9b35;
+}
+
+.sub-logo {
+  text-align: center;
+  color: #8a939e;
+  font-size: 14px;
+  margin-top: -5px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+/* Блок следующего матча в рамке */
+.match-box {
+  background-color: #191d21;
+  border-left: 5px solid #de9b35; /* Красивая оранжевая полоса слева */
+  border-top: 1px solid #2d343c;
+  border-right: 1px solid #2d343c;
+  border-bottom: 1px solid #2d343c;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.match-box h2 {
+  margin-top: 0;
+  color: #de9b35;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.match-info p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #cbd3dc;
+}
+
+.status {
+  color: #00ff66 !important; /* Зеленый статус "Набор открыт" */
+}
+
+/* Кнопки */
+.btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  transition: 0.2s;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-download {
+  background-color: #de9b35;
+  color: #111416;
+}
+
+.btn-download:active {
+  background-color: #b87f28;
+}
+
+/* Блок регистрации */
+.register-box {
+  background-color: #191d21;
+  border: 1px solid #2d343c;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.register-box h3 {
+  margin-top: 0;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+}
+
+.slots-counter {
+  text-align: center;
+  color: #8a939e;
+  font-size: 14px;
+}
+
+/* Поле ввода */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  background-color: #111416;
+  border: 1px solid #3a444e;
+  color: white;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  border-color: #de9b35;
+  outline: none;
+}
+
+/* Выбор команды */
+.team-choice {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.team-choice label {
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn-register {
+  background-color: transparent;
+  color: #de9b35;
+  border: 2px solid #de9b35;
+}
+
+.btn-register:active {
+  background-color: rgba(222, 155, 53, 0.1);
+}
