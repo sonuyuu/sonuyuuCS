@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C Sonuyuu | CS2 Minecraft</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Привет! Мой сайт работает.</h1>
-    <p>Создано прямо с телефона!</p>
+
+  <div class="navbar">
+    <div class="menu-icon">☰</div> <div class="logo">CSonuyuu</div>
+    <div style="width: 24px;"></div> </div>
+
+  <div class="sub-logo">Сайт Сони</div>
+
+  <div class="match-box">
+    <h2>СЛЕД МАТЧ</h2>
+    <div class="match-info">
+      <p><strong>Режим:</strong> Закладка бомбы (5v5)</p>
+      <p><strong>Карта:</strong> de_dust2</p>
+      <p class="status"><strong>Статус:</strong> Набор открыт</p>
+    </div>
+  </div>
+
+  <a href="#" class="btn btn-download">СКАЧАТЬ РЕСУРСПАК (.zip)</a>
+
+  <div class="register-box">
+    <h3>ЗАНЯТЬ СЛОТ НА ИВЕНТ</h3>
+    <p class="slots-counter">Занято мест: <span id="count">0</span> из 10</p>
+    
+    <input type="text" placeholder="Введите ник в Майнкрафте" class="input-field">
+    
+    <div class="team-choice">
+      <label><input type="radio" name="team" value="T"> Террористы</label>
+      <label><input type="radio" name="team" value="CT"> Спецназ</label>
+    </div>
+
+    <button class="btn btn-register">ЗАРЕГАТЬ ИГРУ</button>
+  </div>
+<script src="script.js"></script>
+
 </body>
 </html>
