@@ -1,154 +1,221 @@
-/* Общие настройки */
+.zag {
+  color: white
+}
 body {
-  background-color: #111416;
-  color: #f0f2f5;
-  font-family: 'Segoe UI', sans-serif;
-  padding: 15px;
-  margin: 0;
+  background-color: #191c22
+}
+.zag {
+    text-decoration: underline;       /* Делает текст подчеркнутым */
+    text-decoration-color: #ff9f43;   /* Красит саму линию в цвет */
+    text-decoration-thickness: 3px;  /* толщина линий */
+}
+.zag {
+    text-align: center;
+}
+.pre {
+  text-align: center
+}
+.zag {
+    margin-bottom: 0;       /* Полностью убирае нижний отступ у заголовка */
 }
 
-/* Верхняя панель: бургер и лого */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 5px;
+.pre {
+    margin-top: 0px;
+}
+/* Настраивает саму карточку */
+.match-card {
+    background-color: #14171c; /* Темный фон карточки */
+    border-left: 4px solid #ff9f43; /* Оранжевая полоса слева */
+    border-radius: 8px; /* Скругление углов (кроме левых, где полоса) */
+    padding: 20px; /* Отступы внутри карточки, чтобы текст не прилипал */
+    max-width: 400px; /* Ограничиваем максимальную ширину карточки */
+    margin: 20px auto; /* Центрируем саму карточку на экране */
+    text-align: left; /* Текст внутри карточки выравниваем по левому краю */
+    font-family: sans-serif;
 }
 
-.menu-icon {
-  font-size: 24px;
-  color: #de9b35;
-  cursor: pointer;
+/* Стили для заголовка «СЛЕД МАТЧ» */
+.match-card h2 {
+    color: #ff9f43; /* Оранжевый цвет */
+    margin-top: 0; /* Убираем лишний отступ сверху */
+    margin-bottom: 15px; /* Отодвигаем строчки ниже */
+    font-size: 1.2rem;
+    letter-spacing: 1px; /* Чуть раздвинем буквы */
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: #ffffff;
-  border-bottom: 2px solid #de9b35;
+/* Стили для строк с текстом */
+.match-card p {
+    color: #a4b0be; /* Серый цвет для обычного текста */
+    margin: 8px 0; /* Небольшие отступы между строчками */
+    font-size: 0.95rem;
 }
 
-.sub-logo {
-  text-align: center;
-  color: #8a939e;
-  font-size: 14px;
-  margin-top: -5px;
-  margin-bottom: 25px;
-  text-transform: uppercase;
+/* Выделяем жирный текст белым цветом */
+.match-card strong {
+    color: #ffffff; 
 }
 
-/* Блок следующего матча в рамке */
-.match-box {
-  background-color: #191d21;
-  border-left: 5px solid #de9b35; /* Красивая оранжевая полоса слева */
-  border-top: 1px solid #2d343c;
-  border-right: 1px solid #2d343c;
-  border-bottom: 1px solid #2d343c;
-  padding: 20px;
-  border-radius: 4px;
-  margin-bottom: 20px;
+/* Красим статус в зеленый */
+.status-green {
+    color: #2ed573;
+    font-weight: bold;
+}
+.btn-orange {
+    display: block;            /* Делаем ссылку блоком, чтобы задать размеры */
+    background-color: #ff9f43; /* Твой фирменный оранжевый цвет */
+    color: #14171c;            /* Темный цвет текста для контраста */
+    text-align: center;        /* Текст строго по центру кнопки */
+    padding: 15px 0;           /* Внутренние отступы сверху и снизу */
+    font-weight: bold;         /* Жирный шрифт */
+    text-decoration: none;     /* Убираем стандартное подчеркивание ссылки */
+    border-radius: 8px;        /* Скругляем углы, как у карточки */
+    max-width: 440px;          /* Ограничиваем ширину (чуть шире карточки с учетом ее отступов) */
+    margin: 15px auto;         /* Отступаем от карточки сверху и центрируем на экране */
+    font-family: sans-serif;
+    transition: 0.8s;          /* Бонус: плавное изменение цвета при нажатии */
 }
 
-.match-box h2 {
-  margin-top: 0;
-  color: #de9b35;
-  font-size: 18px;
-  letter-spacing: 1px;
+/* Эффект при нажатии/наведении на телефоне */
+.btn-orange:active {
+    background-color: #e0852b; /* Кнопка станет чуть темнее при тапе */
+}
+/* Контейнер самой формы */
+.event-form {
+    background-color: #14171c; /* Такой же темный фон, как у карточки */
+    border: 1px solid #23272e;  /* Тонкая рамка вокруг формы */
+    border-radius: 8px;
+    padding: 25px;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+    font-family: sans-serif;
 }
 
-.match-info p {
-  margin: 8px 0;
-  font-size: 15px;
-  color: #cbd3dc;
+/* Заголовок формы */
+.event-form h3 {
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
 }
 
-.status {
-  color: #00ff66 !important; /* Зеленый статус "Набор открыт" */
+/* Счетчик мест */
+.slots-count {
+    color: #57606f; /* Тускло-серый цвет */
+    font-size: 0.85rem;
+    margin-bottom: 20px;
 }
 
-/* Кнопки */
-.btn {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  font-size: 15px;
-  transition: 0.2s;
-  border: none;
-  width: 100%;
-  box-sizing: border-box;
+/* Стили для поля ввода никнейма */
+.input-nick {
+    width: 100%;
+    background-color: #0b0c10; /* Очень темное поле ввода */
+    border: 1px solid #2d3436;  /* Серая рамка */
+    border-radius: 6px;
+    padding: 12px 15px;
+    color: #ffffff;             /* Цвет вводимого текста */
+    font-size: 0.95rem;
+    box-sizing: border-box;    /* Чтобы паддинги не взрывали ширину поля */
+    margin-bottom: 20px;
 }
 
-.btn-download {
-  background-color: #de9b35;
-  color: #111416;
+/* Убираем синюю обводку при клике на поле ввода и делаем оранжевой */
+.input-nick:focus {
+    outline: none;
+    border-color: #ff9f43;
 }
 
-.btn-download:active {
-  background-color: #b87f28;
+/* Контейнер для радио-кнопок */
+.faction-selector {
+    display: flex;             /* Выстраивает радио-кнопки в одну строку */
+    justify-content: space-around; /* Распределяет их равномерно */
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-size: 0.95rem;
 }
 
-/* Блок регистрации */
-.register-box {
-  background-color: #191d21;
-  border: 1px solid #2d343c;
-  padding: 20px;
-  border-radius: 4px;
-  margin-top: 20px;
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
-.register-box h3 {
-  margin-top: 0;
-  color: #ffffff;
-  font-size: 16px;
-  text-align: center;
+/* Делаем небольшой отступ от кружочка до текста */
+/* Полностью скрываем стандартный кружок браузера */
+.radio-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
 }
 
-.slots-counter {
-  text-align: center;
-  color: #8a939e;
-  font-size: 14px;
+/* Создаем свой собственный красивый кружок */
+.custom-radio {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #57606f; /* Серый контур по умолчанию */
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: 0.2s;
 }
 
-/* Поле ввода */
-.input-field {
-  width: 100%;
-  padding: 12px;
-  background-color: #111416;
-  border: 1px solid #3a444e;
-  color: white;
-  border-radius: 4px;
-  margin-bottom: 15px;
-  box-sizing: border-box;
+/* Внутренняя точка, которая будет появляться при выборе */
+.custom-radio::after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white; /* Цвет самой точки внутри */
 }
 
-.input-field:focus {
-  border-color: #de9b35;
-  outline: none;
+/* Показываем внутреннюю точку, когда радио-кнопка активна */
+.radio-label input:checked ~ .custom-radio::after {
+    display: block;
 }
 
-/* Выбор команды */
-.team-choice {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
+/* === МАГИЯ ЦВЕТА ДЛЯ ТЕРРОРИСТОВ (Красный) === */
+/* Если выбран Т, контур кружка становится красным */
+.radio-label input:checked ~ .custom-radio {
+    border-color: #ff9f43;
+}
+/* Меняем саму точку внутри на красную */
+.radio-label input:checked ~ .custom-radio::after {
+    background-color: #ff9f43;
 }
 
-.team-choice label {
-  cursor: pointer;
-  font-size: 15px;
+/* === МАГИЯ ЦВЕТА ДЛЯ СПЕЦНАЗА (Синий) === */
+/* Если выбран СТ, контур кружка становится синим */
+.radio-label input[value="ct"]:checked ~ .custom-radio {
+    border-color: #54a0ff;
+}
+/* Меняем саму точку внутри на синюю */
+.radio-label input[value="ct"]:checked ~ .custom-radio::after {
+    background-color: #54a0ff;
 }
 
-.btn-register {
-  background-color: transparent;
-  color: #de9b35;
-  border: 2px solid #de9b35;
+
+/* Большая контурная кнопка «ЗАРЕГАТЬ ИГРУ» */
+.btn-submit {
+    width: 100%;
+    background: transparent;     /* Прозрачный фон внутри кнопки */
+    border: 2px solid #ff9f43;   /* Оранжевый контур */
+    color: #ff9f43;              /* Оранжевый текст */
+    padding: 14px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.btn-register:active {
-  background-color: rgba(222, 155, 53, 0.1);
+/* Эффект при наведении или нажатии */
+.btn-submit:active {
+    background-color: #ff9f43;   /* При тапе полностью закрашивается оранжевым */
+    color: #14171c;              /* Текст становится темным */
 }
