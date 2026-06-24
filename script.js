@@ -1,29 +1,36 @@
-// ТОП-СЕКРЕТНО: Вставь сюда свою ссылку на Webhook из настроек канала Discord
 const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1519083825987195056/GfZEMNWr6oq5Xvjhrw1gXz5moPTHKpbgSVQlcArGHqjFS-K03jpVx3dRFNZowJ5130xT";
 
 document.querySelector('.event-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Запрещаем странице перезагружаться
+    event.preventDefault(); // Запрещаем перезагрузку страницы
 
-    // Получаем никнейм из поля ввода
-    const nickname = document.querySelector('.input-nick').value.trim();
+    const nicknameInput = document.querySelector('.input-nick');
+    const nickname = nicknameInput ? nicknameInput.value.trim() : "";
     
-    // Получаем выбранную сторону (Т или СТ)
+    // Безопасный поиск выбранной радио-кнопки
     const factionInput = document.querySelector('input[name="faction"]:checked');
-    const faction = factionInput.value === 't' ? '🔴 Террористы' : '🔵 Спецназ';
-
+    
     if (!nickname) {
         alert('Введите свой никнейм!');
         return;
     }
 
-    // Собираем красивое сообщение для Дискорда
+    // Определяем сторону и цвет полоски по умолчанию (Террористы)
+    let factionText = '🔴 Террористы';
+    let embedColor = 16743235; // Оранжево-красный
+
+    // Если выбран Спецназ (value="ct"), меняем текст и цвет на синий
+    if (factionInput && factionInput.value === 'ct') {
+        factionText = '🔵 Спецназ';
+        embedColor = 5546239; // Синий
+    }
+
     const requestData = {
         embeds: [{
             title: "🔔 НОВАЯ ЗАЯВКА НА ИВЕНТ",
-            color: factionInput.value === 't' ? 16729943 : 5546239, // Красный или синий цвет полоски в ДС
+            color: embedColor,
             fields: [
                 { name: "👤 Никнейм игрока:", value: nickname, inline: true },
-                { name: "🎮 Выбранная фракция:", value: faction, inline: true },
+                { name: "🎮 Выбранная фракция:", value: factionText, inline: true },
                 { name: "📋 Статус заявки:", value: "⏳ Ожидает подтверждения админа", inline: false }
             ],
             footer: { text: "CSonu Tournament System" },
@@ -31,7 +38,7 @@ document.querySelector('.event-form').addEventListener('submit', function(event)
         }]
     };
 
-    // Отправляем данные в Дискорд
+    // Отправка в Дискорд
     fetch(DISCORD_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -40,12 +47,12 @@ document.querySelector('.event-form').addEventListener('submit', function(event)
     .then(response => {
         if (response.ok) {
             alert('Заявка отправлена! Ожидайте подтверждения админа.');
-            document.querySelector('.input-nick').value = ''; // Очищаем поле ввода
+            if (nicknameInput) nicknameInput.value = ''; // Очищаем поле
         } else {
-            alert('Ошибка при отправке. Попробуйте позже.');
+            alert('Ошибка Дискорда: ' + response.status);
         }
     })
     .catch(error => {
-        alert('Ошибка сети. Проверьте подключение.');
+        alert('Ошибка сети: ' + error.message);
     });
 });
