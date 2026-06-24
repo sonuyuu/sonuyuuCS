@@ -1,44 +1,46 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>C Sonuyuu | CS2 Minecraft</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <div class="navbar">
-    <div class="menu-icon">☰</div> <div class="logo">CSonuyuu</div>
-    <div style="width: 24px;"></div> </div>
-
-  <div class="sub-logo">Сайт Сони</div>
-
-  <div class="match-box">
-    <h2>СЛЕД МАТЧ</h2>
-    <div class="match-info">
-      <p><strong>Режим:</strong> Закладка бомбы (5v5)</p>
-      <p><strong>Карта:</strong> de_dust2</p>
-      <p class="status"><strong>Статус:</strong> Набор открыт</p>
+<html lang=ru>
+  <head>
+  <meta charset="utf-8">
+  <meta name="author" content="sonuyuu">
+    <meta name="description" content="CSonu">
+    <meta name="keywords" content="CSonu">
+      <title>Главная страница</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1 class="zag">CSonu</h1>
+    <p style="color: grey" class="pre"><abbr title="Sonu Kormit">Сайт SK</abbr></p>
+    <div class="match-card">
+      <h2>Следующий матч</h2>
+      <p><strong>Режим:</strong> Закладка Бомбы (5x5)</p>
+      <p><strong>Карта:</strong> De_Dust2</p>
+      <p class="zel"><strong>Статус:</strong> <span class="status-green"> Набор открыт</span></p>
+      <p><strong>Дата:</strong> 29 июня</p>
     </div>
+    <a href="resourcepack.zip" download class="btn-orange">СКАЧАТЬ РЕСУРС ПАК (.zip)</a>
+    <form class="event-form">
+  <h3>ЗАНЯТЬ СЛОТ НА ИВЕНТ</h3>
+  <p class="slots-count">Занято мест: 0 из 10</p>
+  
+  <input type="text" placeholder="Введите свой ник" class="input-nick">
+  
+    <!-- Переключатели фракций (Выбор стороны) -->
+  <div class="faction-selector">
+    <label class="radio-label t-side">
+      <input type="radio" name="faction" value="t" checked>
+      <span class="custom-radio"></span> Террористы
+    </label>
+    
+    <label class="radio-label">
+      <input type="radio" name="faction" value="ct" class="ct-side">
+      <span class="custom-radio"></span> Спецназ
+    </label>
   </div>
 
-  <a href="#" class="btn btn-download">СКАЧАТЬ РЕСУРСПАК (.zip)</a>
+  
+  <button type="submit" class="btn-submit">ЗАРЕГАТЬ ИГРУ</button>
+</form>
 
-  <div class="register-box">
-    <h3>ЗАНЯТЬ СЛОТ НА ИВЕНТ</h3>
-    <p class="slots-counter">Занято мест: <span id="count">0</span> из 10</p>
-    
-    <input type="text" placeholder="Введите ник в Майнкрафте" class="input-field">
-    
-    <div class="team-choice">
-      <label><input type="radio" name="team" value="T"> Террористы</label>
-      <label><input type="radio" name="team" value="CT"> Спецназ</label>
-    </div>
-
-    <button class="btn btn-register">ЗАРЕГАТЬ ИГРУ</button>
-  </div>
-<script src="script.js"></script>
-
-</body>
+  </body>
 </html>
