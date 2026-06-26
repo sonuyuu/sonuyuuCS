@@ -18,20 +18,26 @@
     .faction-ct { color: #54a0ff; font-weight: bold; }
     .no-apps { text-align: center; color: grey; font-size: 0.9rem; }
     h3 { margin-top: 5px; border-bottom: 1px solid #2f2f2f; padding-bottom: 8px; color: #e2e7ed; }
+    #admin-content { display: none; }
+    #error-message { text-align: center; color: #ff4757; margin-top: 50px; font-size: 1.2rem; display: none; }
   </style>
 </head>
 <body>
 
-  <h1>Панель управления ивентом</h1>
-  
-  <div class="apps-list">
-    <h3>Новые заявки (в ожидании):</h3>
-    <div id="pending-container">Загрузка заявок...</div>
-  </div>
+  <div id="error-message">Доступ заблокирован. Неверный пароль администратора!</div>
 
-  <div class="apps-list" style="border-color: #2ed573;">
-    <h3 style="color: #2ed573;">Одобренные участники (минус места):</h3>
-    <div id="approved-container">Загрузка участников...</div>
+  <div id="admin-content">
+    <h1>Панель управления ивентом</h1>
+    
+    <div class="apps-list">
+      <h3>Новые заявки (в ожидании):</h3>
+      <div id="pending-container">Загрузка заявок...</div>
+    </div>
+
+    <div class="apps-list" style="border-color: #2ed573;">
+      <h3 style="color: #2ed573;">Одобренные участники (минус места):</h3>
+      <div id="approved-container">Загрузка участников...</div>
+    </div>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -53,68 +59,80 @@
 
     const adminPassword = prompt("Введите пароль администратора:");
 
-    database.ref('applications').on('value', (snapshot) => {
-        const pendingContainer = document.getElementById('pending-container');
-        const approvedContainer = document.getElementById('approved-container');
-        
-        pendingContainer.innerHTML = "";
-        approvedContainer.innerHTML = "";
-        
-        let hasPending = false;
-        let hasApproved = false;
+    database.ref('admin_secret').once('value')
+      .then((snapshot) => {
+          if (snapshot.val() && snapshot.val() === adminPassword) {
+              document.getElementById('admin-content').style.display = 'block';
+              startListeningApplications();
+          } else {
+              document.getElementById('error-message').style.display = 'block';
+          }
+      })
+      .catch((error) => {
+          document.getElementById('error-message').style.display = 'block';
+      });
 
-        snapshot.forEach((childSnapshot) => {
-            const id = childSnapshot.key;
-            const data = childSnapshot.val();
+    function startListeningApplications() {
+        database.ref('applications').on('value', (snapshot) => {
+            const pendingContainer = document.getElementById('pending-container');
+            const approvedContainer = document.getElementById('approved-container');
             
-            const factionClass = data.faction === "t" ? "faction-t" : "faction-ct";
-            const factionName = data.faction === "t" ? "Террористы" : "Спецназ";
+            pendingContainer.innerHTML = "";
+            approvedContainer.innerHTML = "";
+            
+            let hasPending = false;
+            let hasApproved = false;
 
-            if (data.status === "pending") {
-                hasPending = true;
-                pendingContainer.innerHTML += `
-                    <div class="app-card">
-                        <div>
-                            <strong>${data.nickname}</strong> 
-                            <br><span class="${factionClass}">${factionName}</span>
+            snapshot.forEach((childSnapshot) => {
+                const id = childSnapshot.key;
+                const data = childSnapshot.val();
+                
+                const factionClass = data.faction === "t" ? "faction-t" : "faction-ct";
+                const factionName = data.faction === "t" ? "Террористы" : "Спецназ";
+
+                if (data.status === "pending") {
+                    hasPending = true;
+                    pendingContainer.innerHTML += `
+                        <div class="app-card">
+                            <div>
+                                <strong>${data.nickname}</strong> 
+                                <br><span class="${factionClass}">${factionName}</span>
+                            </div>
+                            <div>
+                                <button class="btn btn-approve" onclick="updateStatus('${id}', 'approved')">Одобрить</button>
+                                <button class="btn btn-reject" onclick="updateStatus('${id}', 'rejected')">Х</button>
+                            </div>
                         </div>
-                        <div>
-                            <button class="btn btn-approve" onclick="updateStatus('${id}', 'approved')">Одобрить</button>
-                            <button class="btn btn-reject" onclick="updateStatus('${id}', 'rejected')">Х</button>
+                    `;
+                }
+                
+                if (data.status === "approved") {
+                    hasApproved = true;
+                    approvedContainer.innerHTML += `
+                        <div class="app-card" style="border-left: 3px solid #2ed573;">
+                            <div>
+                                <strong>${data.nickname}</strong> 
+                                <br><span class="${factionClass}">${factionName}</span>
+                            </div>
+                            <div>
+                                <button class="btn btn-remove" onclick="updateStatus('${id}', 'rejected')">Убрать из игры (-1)</button>
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
+            });
+
+            if (!hasPending) {
+                pendingContainer.innerHTML = '<p class="no-apps">Новых заявок пока нет.</p>';
             }
-            
-            if (data.status === "approved") {
-                hasApproved = true;
-                approvedContainer.innerHTML += `
-                    <div class="app-card" style="border-left: 3px solid #2ed573;">
-                        <div>
-                            <strong>${data.nickname}</strong> 
-                            <br><span class="${factionClass}">${factionName}</span>
-                        </div>
-                        <div>
-                            <button class="btn btn-remove" onclick="updateStatus('${id}', 'rejected')">Убрать из игры (-1)</button>
-                        </div>
-                    </div>
-                `;
+            if (!hasApproved) {
+                approvedContainer.innerHTML = '<p class="no-apps">Пока нет одобренных участников.</p>';
             }
         });
-
-        if (!hasPending) {
-            pendingContainer.innerHTML = '<p class="no-apps">Новых заявок пока нет.</p>';
-        }
-        if (!hasApproved) {
-            approvedContainer.innerHTML = '<p class="no-apps">Пока нет одобренных участников.</p>';
-        }
-    });
+    }
 
     function updateStatus(id, newStatus) {
-        if (!adminPassword) {
-            alert("Без пароля управление невозможно!");
-            return;
-        }
+        if (!adminPassword) return;
 
         database.ref('applications/' + id).once('value').then((snapshot) => {
             const currentData = snapshot.val();
@@ -124,14 +142,9 @@
                 faction: currentData.faction,
                 status: newStatus,
                 secret: adminPassword
-            })
-            .catch((error) => {
-                alert("Ошибка доступа!");
-                console.error(error);
             });
         });
     }
   </script>
 </body>
 </html>
-
