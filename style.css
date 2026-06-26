@@ -1,221 +1,191 @@
+/*фон страницы*/
+body {
+  background: #14171c
+}
+/*заголовок CSonu*/
 .zag {
+  color: white;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: #ff9f43;
+  text-decoration-thickness: 4px;
+  margin-bottom: 1px
+}
+.pred {
+  color: grey;
+  text-align: center;
+  margin-top: 0px
+}
+.f {
   color: white
 }
-body {
-  background-color: #191c22
+.sled {
+  color: #ff9f43
 }
-.zag {
-    text-decoration: underline;       /* Делает текст подчеркнутым */
-    text-decoration-color: #ff9f43;   /* Красит саму линию в цвет */
-    text-decoration-thickness: 3px;  /* толщина линий */
+.u {
+  border: 2px solid #2f2f2f;
+  background-color: #262626ff;
+  border-left: 4px solid #ff9f43;
+  border-radius: 4px;
+  padding: 10px;
+  max-width: 400px;
+  margin: 2px;
+  text-align: left;
+  color: #e2e7ed
 }
-.zag {
-    text-align: center;
+.sled {
+  margin-top: 9px
 }
-.pre {
-  text-align: center
+.m {
+  margin-bottom: 5px;
+  color: #2ed573;
+  font-weight: bold;
 }
-.zag {
-    margin-bottom: 0;       /* Полностью убирае нижний отступ у заголовка */
+.p {
+  color: #ffffff
 }
-
-.pre {
-    margin-top: 0px;
+.x {
+  display: block;
+  background-color: #ff9f43;
+  color: #262626ff !important;
+  border-radius: 5px;
+  text-align: center;
+  padding: 15px 0;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 15px auto;
+  transition: 0.1s;
+  -webkit-tap-highlight-color: transparent;
 }
-/* Настраивает саму карточку */
-.match-card {
-    background-color: #14171c; /* Темный фон карточки */
-    border-left: 4px solid #ff9f43; /* Оранжевая полоса слева */
-    border-radius: 8px; /* Скругление углов (кроме левых, где полоса) */
-    padding: 20px; /* Отступы внутри карточки, чтобы текст не прилипал */
-    max-width: 400px; /* Ограничиваем максимальную ширину карточки */
-    margin: 20px auto; /* Центрируем саму карточку на экране */
-    text-align: left; /* Текст внутри карточки выравниваем по левому краю */
-    font-family: sans-serif;
+.x:active {
+  background-color: #ac6117;
 }
-
-/* Стили для заголовка «СЛЕД МАТЧ» */
-.match-card h2 {
-    color: #ff9f43; /* Оранжевый цвет */
-    margin-top: 0; /* Убираем лишний отступ сверху */
-    margin-bottom: 15px; /* Отодвигаем строчки ниже */
-    font-size: 1.2rem;
-    letter-spacing: 1px; /* Чуть раздвинем буквы */
+.ge {
+  background-color: #262626ff;
+  border-radius: 5px;
+  border: 2px solid #2f2f2f
 }
-
-/* Стили для строк с текстом */
-.match-card p {
-    color: #a4b0be; /* Серый цвет для обычного текста */
-    margin: 8px 0; /* Небольшие отступы между строчками */
-    font-size: 0.95rem;
+.gy {
+  text-align: center;
+  color: #ffffff
 }
-
-/* Выделяем жирный текст белым цветом */
-.match-card strong {
-    color: #ffffff; 
+.gu {
+  color: #aaaaaaff;
+  text-align: center;
 }
-
-/* Красим статус в зеленый */
-.status-green {
-    color: #2ed573;
-    font-weight: bold;
+.gi {
+  width: 93%;
+  background-color: #14171c;
+  border: 1px solid #2f2f2f;
+  border-radius: 5px;
+  padding: 12px 15px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-.btn-orange {
-    display: block;            /* Делаем ссылку блоком, чтобы задать размеры */
-    background-color: #ff9f43; /* Твой фирменный оранжевый цвет */
-    color: #14171c;            /* Темный цвет текста для контраста */
-    text-align: center;        /* Текст строго по центру кнопки */
-    padding: 15px 0;           /* Внутренние отступы сверху и снизу */
-    font-weight: bold;         /* Жирный шрифт */
-    text-decoration: none;     /* Убираем стандартное подчеркивание ссылки */
-    border-radius: 8px;        /* Скругляем углы, как у карточки */
-    max-width: 440px;          /* Ограничиваем ширину (чуть шире карточки с учетом ее отступов) */
-    margin: 15px auto;         /* Отступаем от карточки сверху и центрируем на экране */
-    font-family: sans-serif;
-    transition: 0.8s;          /* Бонус: плавное изменение цвета при нажатии */
+.gi:focus {
+  outline: none;
+  border-color: #ff9f43;
 }
-
-/* Эффект при нажатии/наведении на телефоне */
-.btn-orange:active {
-    background-color: #e0852b; /* Кнопка станет чуть темнее при тапе */
-}
-/* Контейнер самой формы */
-.event-form {
-    background-color: #14171c; /* Такой же темный фон, как у карточки */
-    border: 1px solid #23272e;  /* Тонкая рамка вокруг формы */
-    border-radius: 8px;
-    padding: 25px;
-    max-width: 400px;
-    margin: 20px auto;
-    text-align: center;
-    font-family: sans-serif;
+/* Отступы внутри всей карточки формы, чтобы элементы не прилипали к краям */
+.ge {
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 400px; /* Ограничиваем ширину формы под размер карточки матча */
+  margin: 20px auto; /* Центрируем саму форму на экране */
 }
 
-/* Заголовок формы */
-.event-form h3 {
-    color: #ffffff;
-    margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-}
-
-/* Счетчик мест */
-.slots-count {
-    color: #57606f; /* Тускло-серый цвет */
-    font-size: 0.85rem;
-    margin-bottom: 20px;
-}
-
-/* Стили для поля ввода никнейма */
-.input-nick {
-    width: 100%;
-    background-color: #0b0c10; /* Очень темное поле ввода */
-    border: 1px solid #2d3436;  /* Серая рамка */
-    border-radius: 6px;
-    padding: 12px 15px;
-    color: #ffffff;             /* Цвет вводимого текста */
-    font-size: 0.95rem;
-    box-sizing: border-box;    /* Чтобы паддинги не взрывали ширину поля */
-    margin-bottom: 20px;
-}
-
-/* Убираем синюю обводку при клике на поле ввода и делаем оранжевой */
-.input-nick:focus {
-    outline: none;
-    border-color: #ff9f43;
-}
-
-/* Контейнер для радио-кнопок */
+/* Контейнер для радио-кнопок (выстраиваем их в одну линию) */
 .faction-selector {
-    display: flex;             /* Выстраивает радио-кнопки в одну строку */
-    justify-content: space-around; /* Распределяет их равномерно */
-    margin-bottom: 25px;
-    color: #ffffff;
-    font-size: 0.95rem;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 0.95rem;
 }
 
 .radio-label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-family: sans-serif;
+  margin: 10px 0;
 }
 
-/* Делаем небольшой отступ от кружочка до текста */
-/* Полностью скрываем стандартный кружок браузера */
+/* Скрываем стандартный кружок телефона */
 .radio-label input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
 }
 
-/* Создаем свой собственный красивый кружок */
+/* Рисуем свой красивый кружок */
 .custom-radio {
-    position: relative;
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    border: 2px solid #57606f; /* Серый контур по умолчанию */
-    border-radius: 50%;
-    margin-right: 10px;
-    transition: 0.2s;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #57606f;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+  transition: 0.2s;
 }
 
-/* Внутренняя точка, которая будет появляться при выборе */
+/* Внутренняя точка, которая появляется при выборе */
 .custom-radio::after {
-    content: "";
-    position: absolute;
-    display: none;
-    top: 4px;
-    left: 4px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: white; /* Цвет самой точки внутри */
+  content: "";
+  position: absolute;
+  display: none;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
 
 /* Показываем внутреннюю точку, когда радио-кнопка активна */
 .radio-label input:checked ~ .custom-radio::after {
-    display: block;
+  display: block;
 }
 
-/* === МАГИЯ ЦВЕТА ДЛЯ ТЕРРОРИСТОВ (Красный) === */
-/* Если выбран Т, контур кружка становится красным */
-.radio-label input:checked ~ .custom-radio {
-    border-color: #ff9f43;
-}
-/* Меняем саму точку внутри на красную */
-.radio-label input:checked ~ .custom-radio::after {
-    background-color: #ff9f43;
-}
+/* Цвет для Террористов при выборе (Красный) */
+.radio-label input[value="t"]:checked ~ .custom-radio { border-color: #ff4757; }
+.radio-label input[value="t"]:checked ~ .custom-radio::after { background-color: #ff4757; }
 
-/* === МАГИЯ ЦВЕТА ДЛЯ СПЕЦНАЗА (Синий) === */
-/* Если выбран СТ, контур кружка становится синим */
-.radio-label input[value="ct"]:checked ~ .custom-radio {
-    border-color: #54a0ff;
-}
-/* Меняем саму точку внутри на синюю */
-.radio-label input[value="ct"]:checked ~ .custom-radio::after {
-    background-color: #54a0ff;
-}
+/* Цвет для Спецназа при выборе (Синий) */
+.radio-label input[value="ct"]:checked ~ .custom-radio { border-color: #54a0ff; }
+.radio-label input[value="ct"]:checked ~ .custom-radio::after { background-color: #54a0ff; }
 
-
-/* Большая контурная кнопка «ЗАРЕГАТЬ ИГРУ» */
+/* Оранжевая контурная кнопка «ЗАРЕГАТЬ ИГРУ» */
 .btn-submit {
-    width: 100%;
-    background: transparent;     /* Прозрачный фон внутри кнопки */
-    border: 2px solid #ff9f43;   /* Оранжевый контур */
-    color: #ff9f43;              /* Оранжевый текст */
-    padding: 14px 0;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s;
+  width: 93%; /* Ширина как у инпута для симметрии */
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+  border: 2px solid #ff9f43;
+  color: #ff9f43;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Эффект при наведении или нажатии */
+/* Эффект закрашивания кнопки при нажатии */
 .btn-submit:active {
-    background-color: #ff9f43;   /* При тапе полностью закрашивается оранжевым */
-    color: #14171c;              /* Текст становится темным */
+  background-color: #ff9f43;
+  color: #14171c;
+}
+.radio-label {
+  -webkit-tap-highlight-color: transparent;
 }
