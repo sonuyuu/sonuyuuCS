@@ -38,7 +38,6 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
   <script>
-    // Твоя конфигурация базы данных
     const firebaseConfig = {
       apiKey: "AIzaSyBgB8nsW5qbHHyUCrr8Vb0s3zisIgrIcPc",
       authDomain: "csonu-db.firebaseapp.com",
@@ -52,7 +51,8 @@
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
-    // Слушаем базу данных в реальном времени
+    const adminPassword = prompt("Введите пароль администратора:");
+
     database.ref('applications').on('value', (snapshot) => {
         const pendingContainer = document.getElementById('pending-container');
         const approvedContainer = document.getElementById('approved-container');
@@ -70,7 +70,6 @@
             const factionClass = data.faction === "t" ? "faction-t" : "faction-ct";
             const factionName = data.faction === "t" ? "Террористы" : "Спецназ";
 
-            // 1. Если заявка ожидает одобрения
             if (data.status === "pending") {
                 hasPending = true;
                 pendingContainer.innerHTML += `
@@ -87,7 +86,6 @@
                 `;
             }
             
-            // 2. Если заявка УЖЕ ОДОБРЕНА (Выводим игроков сюда с возможностью удалить)
             if (data.status === "approved") {
                 hasApproved = true;
                 approvedContainer.innerHTML += `
@@ -104,7 +102,6 @@
             }
         });
 
-        // Если списки пустые — пишем заглушки
         if (!hasPending) {
             pendingContainer.innerHTML = '<p class="no-apps">Новых заявок пока нет.</p>';
         }
@@ -113,12 +110,28 @@
         }
     });
 
-    // Функция обновления статуса в Firebase
     function updateStatus(id, newStatus) {
-        database.ref('applications/' + id).update({
-            status: newStatus
+        if (!adminPassword) {
+            alert("Без пароля управление невозможно!");
+            return;
+        }
+
+        database.ref('applications/' + id).once('value').then((snapshot) => {
+            const currentData = snapshot.val();
+            
+            database.ref('applications/' + id).update({
+                nickname: currentData.nickname,
+                faction: currentData.faction,
+                status: newStatus,
+                secret: adminPassword
+            })
+            .catch((error) => {
+                alert("Ошибка доступа!");
+                console.error(error);
+            });
         });
     }
   </script>
 </body>
 </html>
+
