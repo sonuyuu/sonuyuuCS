@@ -8,49 +8,81 @@
   <meta name="description" content="CSonu">
   <title>Главная страница</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Адаптивные стили для ПК-версии */
+    @media screen and (min-width: 768px) {
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .u, .event-form {
+            flex: 1;
+            margin: 0 !important;
+            width: 100% !important;
+            max-width: 420px !important;
+        }
+
+        .x {
+            display: block;
+            max-width: 860px;
+            margin: 20px auto !important;
+            text-align: center;
+        }
+    }
+  </style>
 </head>
-  <body>
-    <h1 class="zag">CSonu</h1>
-    <p class="pred"><abbr title="sonuyuu kormit">Сайт SK</abbr></p>
-    
-    <div class="u">
-      <h2 class="sled"><strong>Следующий матч</strong></h2>
-      <p><strong class="f">Режим:</strong> Закладка бомбы (5х5)</p>
-      <p><strong class="f">Карта:</strong> De_Dust2</p>
-      <p class="m"><strong class="p">Статус:</strong> Набор открыт</p>
-      <p><strong class="f">Дата:</strong> 29 мая</p>
-    </div>
-    
-    <a href="sonuyuu kormit.zip" download class="x"><b>Скачать ресурс пак (.zip)</b></a>
-    
-    
-        <form class="event-form ge">
-      <h2 class="gy"><strong>ЗАНЯТЬ СЛОТ НА ИВЕНТ</strong></h2>
-      
-      <div class="slots-container" style="color: #aaaaaa; font-size: 0.9rem; margin-bottom: 15px; text-align: center; font-family: sans-serif;">
-        <p>Террористы: <span id="t-count" style="color: #ff4757; font-weight: bold;">0</span> из 5</p>
-        <p>Спецназ: <span id="ct-count" style="color: #54a0ff; font-weight: bold;">0</span> из 5</p>
-      </div>
-      
-      <input placeholder="Введите свой ник на Сервере" class="input-nick gi">
-      
-      <div class="faction-selector">
-        <label class="radio-label">
-          <input type="radio" name="faction" value="t" checked>
-          <span class="custom-radio"></span> Террористы
-        </label>
-        <label class="radio-label">
-          <input type="radio" name="faction" value="ct">
-          <span class="custom-radio"></span> Спецназ
-        </label>
-      </div>
-      
-      <button type="button" class="btn-submit">ЗАРЕГАТЬ ИГРУ</button>
-    </form>
+<body>
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <h1 class="zag">CSonu</h1>
+  <p class="pred"><abbr title="sonuyuu kormit">Сайт SK</abbr></p>
 
-    <script src="script.js"></script>
-  </body>
+  <a href="resurspak.zip" download class="x"><b>Скачать ресурс пак (.zip)</b></a>
+
+  <div class="main-content">
+
+      <div class="u">
+        <h2 class="sled"><strong>Следующий матч</strong></h2>
+        <p><strong class="f">Режим: </strong> Закладка бомбы (5х5)</p>
+        <p><strong class="f">Карта: </strong> De_Dust2</p>
+        <p class="m"><strong class="f">Статус: </strong> Набор открыт</p>
+        <p><strong class="f">Дата: </strong> 29 мая</p>
+      </div>
+
+      <form class="event-form ge">
+        <h2 class="gy"><strong>ЗАНЯТЬ СЛОТ НА ИВЕНТ</strong></h2>
+        
+        <div class="slots-container" style="color: #aaaaaa; font-size: 0.9rem; margin-bottom: 15px;">
+            <p>Террористы: <span id="t-count" style="color: #ff4757; font-weight: bold;">0 из 5</span></p>
+            <p>Спецназ: <span id="ct-count" style="color: #54a0ff; font-weight: bold;">0 из 5</span></p>
+        </div>
+
+        <input placeholder="Введите свой ник на Сервере" class="input-nick gi">
+
+        <div class="faction-selector">
+            <label class="radio-label">
+                <input type="radio" name="faction" value="t" checked>
+                <span class="custom-radio"></span> Террористы
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="faction" value="ct">
+                <span class="custom-radio"></span> Спецназ
+            </label>
+        </div>
+
+        <button type="button" class="btn-submit">ЗАРЕГАТЬ ИГРУ</button>
+      </form>
+
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="script.js"></script>
+
+</body>
 </html>
